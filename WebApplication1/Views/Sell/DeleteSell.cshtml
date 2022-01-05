@@ -1,0 +1,73 @@
+﻿@model WebApplication1.Models.Sell
+
+@{
+    ViewBag.Title = "Delete Sell";
+}
+
+<h2>Delete Sell</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sell</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Buyer Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Buyer Contact")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Group")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_group)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Quantity")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_count)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Charges")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Cancel", "DisplaySell", "Sell", new { @class = "btn btn-danger" })
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.Doner>
+
+@{
+    ViewBag.Title = "Display Doner";
+}
+
+<h2>Display Doner</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateDoner", "Doner", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr class="success">
+        <th>
+            @Html.DisplayName("Doner Name")
+        </th>
+        <th>
+            @Html.DisplayName("Doner Contact")
+        </th>
+        <th>
+            @Html.DisplayName("Doner Address")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doner_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doner_contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doner_address)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateDoner", "Doner", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "DetailDoner", "Doner", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "DeleteDoner", "Doner", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

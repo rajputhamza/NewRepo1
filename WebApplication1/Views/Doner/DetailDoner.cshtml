@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.Doner
+
+@{
+    ViewBag.Title = "Detail Doner";
+}
+
+<h2>Detail Doner</h2>
+
+<div>
+    <h4>Doner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Doner Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doner_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Doner Contact")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doner_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Doner Address")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doner_address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "UpdateDoner", "Doner", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Cancel", "DisplayDoner", "Doner", new { @class = "btn btn-danger" })
+</p>

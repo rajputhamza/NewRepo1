@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.Blood>
+
+@{
+    ViewBag.Title = "Display Blood";
+}
+
+<h2>Display Blood</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBlood", "Blood", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr class="success">
+        <th>
+            @Html.DisplayName("Blood Group")
+        </th>
+        <th>
+            @Html.DisplayName("Blood Quantity")
+        </th>
+        <th>
+            @Html.DisplayName("Blood Charges")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blood_group)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blood_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blood_fee)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateBlood", "Blood", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "DetailBlood", "Blood", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "DeleteBlood", "Blood", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

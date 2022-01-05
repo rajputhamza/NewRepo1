@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.Blood
+
+@{
+    ViewBag.Title = "Detail Blood";
+}
+
+<h2>Detail Blood</h2>
+
+<div>
+    <h4>Blood</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Blood Group")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_group)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Quantity")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Charges")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_fee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "UpdateBlood", "Blood", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Cancel", "DisplayBlood", "Blood", new { @class = "btn btn-danger" })
+</p>

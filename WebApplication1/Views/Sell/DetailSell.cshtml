@@ -1,0 +1,66 @@
+﻿@model WebApplication1.Models.Sell
+
+@{
+    ViewBag.Title = "Detail Sell";
+}
+
+<h2>Detail Sell</h2>
+
+<div>
+    <h4>Sell</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Buyer Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Buyer Contact")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Group")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_group)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Quantity")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_count)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Blood Charges")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sell_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "UpdateSell", "Sell", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Cancel", "DisplaySell", "Sell", new { @class = "btn btn-danger" })
+</p>

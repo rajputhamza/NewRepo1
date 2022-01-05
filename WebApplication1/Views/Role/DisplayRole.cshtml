@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication1.Models.Role>
+
+@{
+    ViewBag.Title = "Display Role";
+}
+
+<h2>Display Role</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateRole", "Role", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr class="success">
+        <th>
+            @Html.DisplayName("User Role")
+        </th>
+        <th>
+            @Html.DisplayName("User Name")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateRole", "Role", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "DetailRole", "Role", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "DeleteRole", "Role", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

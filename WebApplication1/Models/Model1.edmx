@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Blood_bankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Blood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Blood_group" Type="nvarchar" MaxLength="40" />
+          <Property Name="Blood_quantity" Type="nvarchar" MaxLength="40" />
+          <Property Name="Blood_fee" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Doner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doner_name" Type="nvarchar" MaxLength="40" />
+          <Property Name="Doner_contact" Type="nvarchar" MaxLength="11" />
+          <Property Name="Doner_address" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sell">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sell_name" Type="nvarchar" MaxLength="40" />
+          <Property Name="Sell_contact" Type="nvarchar" MaxLength="40" />
+          <Property Name="Sell_group" Type="nvarchar" MaxLength="40" />
+          <Property Name="Sell_count" Type="nvarchar" MaxLength="40" />
+          <Property Name="Sell_fee" Type="nvarchar" MaxLength="40" />
+          <Property Name="Sell_date" Type="date" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="40" />
+          <Property Name="Password" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK__Role__UserId__182C9B23">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Blood_bankModelStoreContainer">
+          <EntitySet Name="Blood" EntityType="Self.Blood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doner" EntityType="Self.Doner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sell" EntityType="Self.Sell" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Role__UserId__182C9B23" Association="Self.FK__Role__UserId__182C9B23">
+            <End Role="users" EntitySet="users" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Blood_bankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Blood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Blood_group" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Blood_quantity" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Blood_fee" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Doner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doner_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Doner_contact" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Doner_address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Role1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__Role__UserId__182C9B23" FromRole="Role" ToRole="users" />
+        </EntityType>
+        <EntityType Name="Sell">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sell_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sell_contact" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sell_group" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sell_count" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sell_fee" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sell_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Role__UserId__182C9B23" FromRole="users" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK__Role__UserId__182C9B23">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Blood_bankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bloods" EntityType="Self.Blood" />
+          <EntitySet Name="Doners" EntityType="Self.Doner" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Sells" EntityType="Self.Sell" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK__Role__UserId__182C9B23" Association="Self.FK__Role__UserId__182C9B23">
+            <End Role="users" EntitySet="users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Blood_bankModelStoreContainer" CdmEntityContainer="Blood_bankEntities">
+          <EntitySetMapping Name="Bloods">
+            <EntityTypeMapping TypeName="Blood_bankModel.Blood">
+              <MappingFragment StoreEntitySet="Blood">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Blood_group" ColumnName="Blood_group" />
+                <ScalarProperty Name="Blood_quantity" ColumnName="Blood_quantity" />
+                <ScalarProperty Name="Blood_fee" ColumnName="Blood_fee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doners">
+            <EntityTypeMapping TypeName="Blood_bankModel.Doner">
+              <MappingFragment StoreEntitySet="Doner">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Doner_name" ColumnName="Doner_name" />
+                <ScalarProperty Name="Doner_contact" ColumnName="Doner_contact" />
+                <ScalarProperty Name="Doner_address" ColumnName="Doner_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Blood_bankModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sells">
+            <EntityTypeMapping TypeName="Blood_bankModel.Sell">
+              <MappingFragment StoreEntitySet="Sell">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sell_name" ColumnName="Sell_name" />
+                <ScalarProperty Name="Sell_contact" ColumnName="Sell_contact" />
+                <ScalarProperty Name="Sell_group" ColumnName="Sell_group" />
+                <ScalarProperty Name="Sell_count" ColumnName="Sell_count" />
+                <ScalarProperty Name="Sell_fee" ColumnName="Sell_fee" />
+                <ScalarProperty Name="Sell_date" ColumnName="Sell_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="Blood_bankModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
